@@ -29,7 +29,7 @@
 
 # ### Importing the required libraries or packages for EDA
 
-# In[145]:
+# In[1]:
 
 
 #Importing packages
@@ -51,7 +51,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 # #### Missing Value - Calculator
 
-# In[146]:
+# In[2]:
 
 
 def missingValue(df):
@@ -68,13 +68,7 @@ def missingValue(df):
 #   - Bar plot - Frequency of feature in percentage
 #   - Pie Chart
 
-# In[147]:
-
-
-fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(8, 5))
-
-
-# In[148]:
+# In[3]:
 
 
 # Frequency of each feature in percentage.
@@ -101,7 +95,7 @@ def cat_analysis(df, colnames, nrows=2,mcols=2,width=20,height=30, sortbyindex=F
 #   - Box plot - for checking range of outliers
 #   - distplot - For checking skewness
 
-# In[149]:
+# In[4]:
 
 
 def outlier_detect(df,colname,nrows=2,mcols=2,width=20,height=15):
@@ -127,7 +121,7 @@ def outlier_detect(df,colname,nrows=2,mcols=2,width=20,height=15):
 # ### Function for Bi-variante Analysis
 #   - Used countplot for the analysis
 
-# In[150]:
+# In[5]:
 
 
 def cat_bi_analysis(df,colname,depend_var,nrows=2,mcols=2,width=20,height=15):
@@ -154,7 +148,7 @@ def cat_bi_analysis(df,colname,depend_var,nrows=2,mcols=2,width=20,height=15):
 #   - Used Boxplot 
 #   - Point plot
 
-# In[151]:
+# In[6]:
 
 
 def num_mult_analysis(df,colname,category,groupby,nrows=2,mcols=2,width=20,height=15):
@@ -175,25 +169,25 @@ def num_mult_analysis(df,colname,category,groupby,nrows=2,mcols=2,width=20,heigh
 
 # ### Loading the Dataset
 
-# In[152]:
+# In[7]:
 
 
 treadmill_usg_data = pd.read_csv("./CardioGoodFitness.csv")
 
 
-# In[153]:
+# In[8]:
 
 
 treadmill_usg_data.head()
 
 
-# In[154]:
+# In[9]:
 
 
 treadmill_usg_data.shape
 
 
-# In[155]:
+# In[10]:
 
 
 treadmill_usg_data.columns
@@ -201,7 +195,7 @@ treadmill_usg_data.columns
 
 # ### Validating Duplicate Records.
 
-# In[156]:
+# In[11]:
 
 
 # Dropping Duplicates if any
@@ -214,7 +208,7 @@ treadmill_usg_data.shape
 
 # ### Missing Value
 
-# In[157]:
+# In[12]:
 
 
 missingValue(treadmill_usg_data).head(5)
@@ -225,7 +219,7 @@ missingValue(treadmill_usg_data).head(5)
 
 # ### Unique values (counts) for each Feature
 
-# In[158]:
+# In[13]:
 
 
 treadmill_usg_data.nunique()
@@ -233,55 +227,55 @@ treadmill_usg_data.nunique()
 
 # ### Unique values (names) are checked for each Features
 
-# In[159]:
+# In[14]:
 
 
 treadmill_usg_data['Product'].unique()
 
 
-# In[160]:
+# In[15]:
 
 
 treadmill_usg_data['Age'].unique()
 
 
-# In[161]:
+# In[16]:
 
 
 treadmill_usg_data['Gender'].unique()
 
 
-# In[162]:
+# In[17]:
 
 
 treadmill_usg_data['Education'].unique()
 
 
-# In[163]:
+# In[18]:
 
 
 treadmill_usg_data['MaritalStatus'].unique()
 
 
-# In[164]:
+# In[19]:
 
 
 treadmill_usg_data['Usage'].unique()
 
 
-# In[165]:
+# In[20]:
 
 
 treadmill_usg_data['Fitness'].unique()
 
 
-# In[166]:
+# In[21]:
 
 
 treadmill_usg_data['Income'].unique()
 
 
-# In[167]:
+# In[22]:
 
 
 treadmill_usg_data['Miles'].unique()
@@ -292,7 +286,7 @@ treadmill_usg_data['Miles'].unique()
 
 # ### DataType Validation
 
-# In[168]:
+# In[23]:
 
 
 treadmill_usg_data.info()
@@ -303,7 +297,7 @@ treadmill_usg_data.info()
 
 # ### Analyzing basic statistics about each feature, such as count, min, max, and mean
 
-# In[169]:
+# In[24]:
 
 
 treadmill_usg_data.describe()
@@ -326,7 +320,7 @@ treadmill_usg_data.describe()
 
 # ### AgeCategory & Age Group
 
-# In[170]:
+# In[25]:
 
 
 bins = [14,20,30,40,60]
@@ -335,7 +329,7 @@ treadmill_usg_data['AgeGroup'] = pd.cut(treadmill_usg_data['Age'], bins)
 treadmill_usg_data['AgeCategory'] = pd.cut(treadmill_usg_data['Age'], bins,labels=labels)
 
 
-# In[171]:
+# In[26]:
 
 
 treadmill_usg_data.head()
@@ -343,7 +337,7 @@ treadmill_usg_data.head()
 
 # ### Income Slab
 
-# In[172]:
+# In[27]:
 
 
 bins_income = [29000, 35000, 60000, 85000,105000]
@@ -367,7 +361,7 @@ treadmill_usg_data.head()
 #  - Income
 #  - Miles
 
-# In[173]:
+# In[28]:
 
 
 col_num = [ 'Income', 'Miles']
@@ -383,13 +377,13 @@ outlier_detect(treadmill_usg_data,col_num,2,2,14,12)
 
 # ### Handling outliers
 
-# In[174]:
+# In[29]:
 
 
 treadmill_usg_data_v1 = treadmill_usg_data.copy()
 
 
-# In[175]:
+# In[30]:
 
 
 #Outlier Treatment: Remove top 5% & bottom 1% of the Column Outlier values
@@ -402,7 +396,7 @@ plt.show()
 
 # ### Removing outliers for the Mile Feature
 
-# In[176]:
+# In[31]:
 
 
 #Outlier Treatment: Remove top 5% & bottom 1% of the Column Outlier values
@@ -413,14 +407,14 @@ treadmill_usg_data_v1 = treadmill_usg_data_v1[(treadmill_usg_data_v1['Miles'] > 
 plt.show()
 
 
-# In[177]:
+# In[32]:
 
 
 col_num = [ 'Income', 'Miles']
 outlier_detect(treadmill_usg_data_v1,col_num,2,2,14,12)
 
 
-# In[178]:
+# In[33]:
 
 
 treadmill_usg_data_v1.shape
@@ -431,13 +425,13 @@ treadmill_usg_data_v1.shape
 
 # ### Categorical variable Uni-variante Analysis
 
-# In[179]:
+# In[34]:
 
 
 treadmill_usg_data.columns
 
 
-# In[180]:
+# In[35]:
 
 
 cat_colnames = ['Product', 'Gender', 'MaritalStatus', 'AgeGroup', 'AgeCategory','IncomeSlab','Fitness']
@@ -462,28 +456,28 @@ cat_analysis(treadmill_usg_data,cat_colnames,7,2,14,40)
 
 # ### Bivariante Analysis for Numerical variables
 
-# In[181]:
+# In[36]:
 
 
 col_num = [ 'Income', 'Miles']
 num_mult_analysis(treadmill_usg_data,col_num,"AgeCategory","Product")
 
 
-# In[182]:
+# In[37]:
 
 
 col_num = [ 'Income', 'Miles']
 num_mult_analysis(treadmill_usg_data,col_num,"Education","Product")
 
 
-# In[183]:
+# In[38]:
 
 
 col_num = [ 'Income', 'Miles']
 num_mult_analysis(treadmill_usg_data,col_num,"Fitness","Product")
 
 
-# In[184]:
+# In[39]:
 
 
 plt.figure(figsize = (16, 10))
@@ -496,7 +490,7 @@ plt.show()
 #   - **Income and education** show a strong correlation. High-income and highly educated people prefer high-end models (TM798), as mentioned during Bivariant analysis of Categorical variables.
 #   - There is no corelation between **Usage & Age** or **Fitness & Age** which mean Age should not be barrier to use treadmills or specific model of treadmills.
 
-# In[185]:
+# In[40]:
 
 
 sns.pairplot(treadmill_usg_data, hue='Product')
@@ -514,7 +508,7 @@ plt.show()
 
 # ### Product - IncomeSlab
 
-# In[186]:
+# In[41]:
 
 
 pd.crosstab(index=treadmill_usg_data['Product'], columns=[treadmill_usg_data['IncomeSlab']],margins=True) 
@@ -522,7 +516,7 @@ pd.crosstab(index=treadmill_usg_data['Product'], columns=[treadmill_usg_data['In
 
 # #### Percentage of a high-income customer purchasing a treadmill (Marginal Probability)
 
-# In[187]:
+# In[42]:
 
 
 # Sum of the treadmill purchased by high income customer by total no. of customers.
@@ -531,7 +525,7 @@ round(14/180,2)*100
 
 # #### Percentage of a High-income customer purchasing TM798 treadmill (Joint Probability)
 
-# In[188]:
+# In[43]:
 
 
 # Sum of the treadmill with model TM798 purchased by high income customer by total no. of customers.
@@ -540,7 +534,7 @@ round(17/180,2)*100
 
 # #### Percentage of customer with high-Income salary buying treadmill given that Product is TM798 (Conditional Probability)
 
-# In[189]:
+# In[44]:
 
 
 round(17/17,2)*100
@@ -551,7 +545,7 @@ round(17/17,2)*100
 
 # ### Product - Gender
 
-# In[190]:
+# In[45]:
 
 
 pd.crosstab(index=treadmill_usg_data['Product'], columns=[treadmill_usg_data['Gender']],margins=True) 
@@ -559,7 +553,7 @@ pd.crosstab(index=treadmill_usg_data['Product'], columns=[treadmill_usg_data['Ge
 
 # #### Percentage of a Male customer purchasing a treadmill
 
-# In[191]:
+# In[46]:
 
 
 prob = round((104/180),2)
@@ -569,7 +563,7 @@ pct
 
 # #### Percentage of a Female customer purchasing TM798 treadmill
 
-# In[192]:
+# In[47]:
 
 
 prob = round((7/180),2)
@@ -582,7 +576,7 @@ pct
 #  - P(A|B) = P(A,B)/P(B)
 #  - P(Female|TM195) = P(Female,TM195)/P(TM195)
 
-# In[193]:
+# In[48]:
 
 
 prob = round((40/80),2)
@@ -596,7 +590,7 @@ pct
 
 # ### Product - Fitness
 
-# In[194]:
+# In[49]:
 
 
 pd.crosstab(index=treadmill_usg_data['Product'], columns=[treadmill_usg_data['Fitness']],margins=True) 
@@ -604,7 +598,7 @@ pd.crosstab(index=treadmill_usg_data['Product'], columns=[treadmill_usg_data['Fi
 
 # #### Percentage of a customers having fitness level5 are
 
-# In[195]:
+# In[50]:
 
 
 prob = round((31/180),2)
@@ -614,7 +608,7 @@ pct
 
 # #### Percentage of a customer with Fitness Level 5 purchasing TM798 treadmill 
 
-# In[196]:
+# In[51]:
 
 
 prob = round((29/180),2)
@@ -624,7 +618,7 @@ pct
 
 # #### Percentage of customer with fitness level-5 buying TM798 treadmill given that Product is TM798
 
-# In[197]:
+# In[52]:
 
 
 prob = round((29/31),2)
@@ -637,7 +631,7 @@ pct
 
 # ### Product - AgeCategory
 
-# In[198]:
+# In[53]:
 
 
 pd.crosstab(index=treadmill_usg_data['Product'], columns=[treadmill_usg_data['AgeCategory']],margins=True) 
@@ -645,7 +639,7 @@ pd.crosstab(index=treadmill_usg_data['Product'], columns=[treadmill_usg_data['Ag
 
 # #### Percentage of customers with Age between 20s and 30s use treadmills
 
-# In[199]:
+# In[54]:
 
 
 prob = round((110/180),2)
@@ -659,13 +653,13 @@ pct
 
 # ### Product - Marital Status
 
-# In[200]:
+# In[55]:
 
 
 pd.crosstab(index=treadmill_usg_data['Product'], columns=[treadmill_usg_data['MaritalStatus']],margins=True) 
 
 
-# In[201]:
+# In[56]:
 
 
 prob = round((107/180),2)
